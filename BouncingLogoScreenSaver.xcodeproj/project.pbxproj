@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF67E01B29A497C1004539A3 /* BouncingLogoScreenSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AF67E01A29A497C1004539A3 /* BouncingLogoScreenSaverView.h */; };
-		AF67E01D29A497C1004539A3 /* BouncingLogoScreenSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF67E01C29A497C1004539A3 /* BouncingLogoScreenSaverView.m */; };
+		AF67E02729A498B8004539A3 /* BouncingLogoScreenSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E02629A498B8004539A3 /* BouncingLogoScreenSaverView.swift */; };
+		AF67E02D29A4B0F8004539A3 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E02C29A4B0F8004539A3 /* Logo.swift */; };
+		AF67E05129A502E4004539A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E05029A502E4004539A3 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AF67E01729A497C1004539A3 /* BouncingLogoScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BouncingLogoScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF67E01A29A497C1004539A3 /* BouncingLogoScreenSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BouncingLogoScreenSaverView.h; sourceTree = "<group>"; };
-		AF67E01C29A497C1004539A3 /* BouncingLogoScreenSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BouncingLogoScreenSaverView.m; sourceTree = "<group>"; };
+		AF67E01729A497C1004539A3 /* Bouncing Logo.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bouncing Logo.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF67E02629A498B8004539A3 /* BouncingLogoScreenSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncingLogoScreenSaverView.swift; sourceTree = "<group>"; };
+		AF67E02C29A4B0F8004539A3 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
+		AF67E05029A502E4004539A3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +41,7 @@
 		AF67E01829A497C1004539A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AF67E01729A497C1004539A3 /* BouncingLogoScreenSaver.saver */,
+				AF67E01729A497C1004539A3 /* Bouncing Logo.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -47,8 +49,9 @@
 		AF67E01929A497C1004539A3 /* BouncingLogoScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
-				AF67E01A29A497C1004539A3 /* BouncingLogoScreenSaverView.h */,
-				AF67E01C29A497C1004539A3 /* BouncingLogoScreenSaverView.m */,
+				AF67E02629A498B8004539A3 /* BouncingLogoScreenSaverView.swift */,
+				AF67E02C29A4B0F8004539A3 /* Logo.swift */,
+				AF67E05029A502E4004539A3 /* Extensions.swift */,
 			);
 			path = BouncingLogoScreenSaver;
 			sourceTree = "<group>";
@@ -60,7 +63,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF67E01B29A497C1004539A3 /* BouncingLogoScreenSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +84,7 @@
 			);
 			name = BouncingLogoScreenSaver;
 			productName = BouncingLogoScreenSaver;
-			productReference = AF67E01729A497C1004539A3 /* BouncingLogoScreenSaver.saver */;
+			productReference = AF67E01729A497C1004539A3 /* Bouncing Logo.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -96,6 +98,7 @@
 				TargetAttributes = {
 					AF67E01629A497C1004539A3 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -132,7 +135,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF67E01D29A497C1004539A3 /* BouncingLogoScreenSaverView.m in Sources */,
+				AF67E02D29A4B0F8004539A3 /* Logo.swift in Sources */,
+				AF67E05129A502E4004539A3 /* Extensions.swift in Sources */,
+				AF67E02729A498B8004539A3 /* BouncingLogoScreenSaverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,18 +256,28 @@
 		AF67E02129A497C1004539A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PJ6H7TZH8L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSPrincipalClass = BouncingLogoScreenSaverView;
+				INFOPLIST_KEY_NSPrincipalClass = BouncingLogoScreenSaver.BouncingLogoScreenSaverView;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nv.BouncingLogoScreenSaver;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "Bouncing Logo";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -270,18 +285,27 @@
 		AF67E02229A497C1004539A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PJ6H7TZH8L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSPrincipalClass = BouncingLogoScreenSaverView;
+				INFOPLIST_KEY_NSPrincipalClass = BouncingLogoScreenSaver.BouncingLogoScreenSaverView;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nv.BouncingLogoScreenSaver;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "Bouncing Logo";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
