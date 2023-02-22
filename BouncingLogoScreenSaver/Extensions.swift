@@ -1,7 +1,7 @@
 //
 //
 // Extensions.swift
-// ScreenSaverDebugger
+// BouncingLogoScreenSaver
 //
 // Created by sinezeleuny on 21.02.2023
 //
@@ -42,8 +42,5 @@ extension NSColor {
                        green: min(green + percentage/100, 1.0),
                        blue: min(blue + percentage/100, 1.0),
                        alpha: alpha)
-//        } else {
-//            return nil
-//        }
     }
 }

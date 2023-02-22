@@ -12,18 +12,14 @@ import AppKit
 
 class Logo {
     static func path(bounds: CGRect) -> NSBezierPath {
-        let path = NSBezierPath()
         
+        let path = NSBezierPath()
         let basicHeight = CGFloat(91.97799912230174)
 //        let basicWidth = CGFloat(77.0)
-        
         let side = min(bounds.width, bounds.height)
         let k = CGFloat(1/basicHeight) * side
-        
         let x0 = bounds.minX
         let y0 = -bounds.minY
-        
-        
         
         // Apple
         path.move(to: CGPoint(x: x0 + k * 75.39,
@@ -127,6 +123,7 @@ class Logo {
         path.line(to: CGPoint(x: x0 + k * 57.75, y: y0 + k * 1.84))
 
         path.close()
+        
         let yMirror = AffineTransform(scaleByX: 1, byY: -1)
         let translation = AffineTransform(translationByX: 0, byY: path.bounds.height)
         
@@ -134,5 +131,6 @@ class Logo {
         path.transform(using: translation)
         
         return path
+        
     }
 }

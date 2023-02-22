@@ -17,7 +17,7 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
     private var desiredVelocityMagnitude: CGFloat = 5
     private var velocityDenominator: CGFloat = 150
     
-    private let colors: [NSColor] = [
+    private var colors: [NSColor] = [
         NSColor(hex: "#61BB46"),
         NSColor(hex: "#FDB827"),
         NSColor(hex: "#F5821F"),
@@ -25,11 +25,10 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
         NSColor(hex: "#963D97"),
         NSColor(hex: "#009DDC")
     ]
-    private var colorIndex: Int = 0
-    private var lighter: Bool = true
+    private var color: NSColor = .white
+//    private var lighter: Bool = true
     
     private func initialVelocity() -> CGVector {
-        
         let yVelocity = CGFloat.random(in: (1.5/5)*desiredVelocityMagnitude...(3.5/5)*desiredVelocityMagnitude)
         let xSign: CGFloat = Bool.random() ? 1 : -1
         let xVelocity = sqrt(pow(desiredVelocityMagnitude, 2) - pow(yVelocity, 2))
@@ -46,7 +45,17 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
     }
     
     private func changeColor() {
-        colorIndex = Int.random(in: 0..<colors.count)
+        var previousColor: NSColor?
+        if let previousColorIndex = colors.firstIndex(of: color) {
+            previousColor = colors[previousColorIndex]
+            colors.remove(at: previousColorIndex)
+        }
+        let nextColorIndex = Int.random(in: 0..<colors.count)
+        color = colors[nextColorIndex]
+        
+        if let previousColor = previousColor {
+            colors.append(previousColor)
+        }
     }
     
     // Inits
@@ -98,8 +107,8 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
 //            colors[colorIndex].darker()!.setStroke()
 //        }
         
-        colors[colorIndex].setStroke()
-        colors[colorIndex].setFill()
+        color.setStroke()
+        color.setFill()
         logo.lineWidth = 1.0
         
 //        logo.stroke()
@@ -111,14 +120,14 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
         
         let oobAxes = logoIsOOB()
             if oobAxes.xAxis {
-                logoVelocity.dx *= -1
                 changeColor()
-                lighter = Bool.random()
+//                lighter = Bool.random()
+                logoVelocity.dx *= -1
             }
             if oobAxes.yAxis {
-                logoVelocity.dy *= -1
                 changeColor()
-                lighter = Bool.random()
+//                lighter = Bool.random()
+                logoVelocity.dy *= -1
             }
 
             logoPosition.x += logoVelocity.dx
