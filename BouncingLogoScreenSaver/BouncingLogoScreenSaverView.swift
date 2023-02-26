@@ -13,7 +13,7 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
     
     private var logoPosition: CGPoint = .zero
     private var logoVelocity: CGVector = .zero
-    private var logoRadius: CGFloat = 10
+    private var logoRadius: CGFloat = .zero
     private var desiredVelocityMagnitude: CGFloat = 5
     private var velocityDenominator: CGFloat = 150
     
@@ -26,7 +26,6 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
         NSColor(hex: "#009DDC")
     ]
     private var color: NSColor = .white
-//    private var lighter: Bool = true
     
     private func initialVelocity() -> CGVector {
         let yVelocity = CGFloat.random(in: (1.5/5)*desiredVelocityMagnitude...(3.5/5)*desiredVelocityMagnitude)
@@ -58,6 +57,15 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
         }
     }
     
+    func getLogoPosition() -> CGPoint {
+        let buffer = logoRadius + CGFloat(2)
+        let maxXPosition = frame.width - logoRadius * 2
+        let maxYPosition = frame.height - logoRadius * 2 * 1.195
+        let position = CGPoint(x: CGFloat.random(in: buffer...(maxXPosition - buffer)), y: CGFloat.random(in: buffer...(maxYPosition - buffer)))
+        print(position)
+        return position
+    }
+    
     // Inits
     
     override init?(frame: NSRect, isPreview: Bool) {
@@ -65,14 +73,17 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
         
         window?.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
-        logoRadius = min(frame.width, frame.height) / CGFloat(12)
         
-        logoPosition = CGPoint(x: frame.width / 2, y: frame.height / 2)
+        logoRadius = min(frame.width, frame.height) / CGFloat(12)
+
+        logoPosition = getLogoPosition()
         
         desiredVelocityMagnitude = sqrt(pow(frame.width, 2) - pow(frame.height, 2)) / velocityDenominator
         logoVelocity = initialVelocity()
         
-        changeColor()
+        self.wantsLayer = true
+        self.layer?.backgroundColor = .black
+//        changeColor()
     }
     
     @available(*, unavailable)
@@ -83,64 +94,49 @@ class BouncingLogoScreenSaverView: ScreenSaverView, NSWindowDelegate {
     // Lifecycle
     
     override func draw(_ rect: NSRect) {
-        drawBackground(.black)
         drawLogo()
-    }
-    
-    private func drawBackground(_ color: NSColor) {
-        let background = NSBezierPath(rect: bounds)
-        color.setFill()
-        background.fill()
     }
 
     private func drawLogo() {
         let logoRect = NSRect(x: logoPosition.x - logoRadius,
                               y: logoPosition.y - logoRadius,
                               width: logoRadius * 2,
-                              height: logoRadius * 2)
+                              height: logoRadius * 2 * 1.195)
 
         let logo = Logo.path(bounds: logoRect)
-        
-//        if lighter {
-//            colors[colorIndex].lighter()!.setStroke()
-//        } else {
-//            colors[colorIndex].darker()!.setStroke()
-//        }
-        
-        color.setStroke()
         color.setFill()
-        logo.lineWidth = 1.0
-        
-//        logo.stroke()
         logo.fill()
     }
     
     override func animateOneFrame() {
         super.animateOneFrame()
-        
+        animationTimeInterval = 0.0002
         let oobAxes = logoIsOOB()
             if oobAxes.xAxis {
-                changeColor()
-//                lighter = Bool.random()
+//                changeColor()
                 logoVelocity.dx *= -1
             }
             if oobAxes.yAxis {
-                changeColor()
-//                lighter = Bool.random()
+//                changeColor()
                 logoVelocity.dy *= -1
             }
 
             logoPosition.x += logoVelocity.dx
             logoPosition.y += logoVelocity.dy
 
-            setNeedsDisplay(bounds)
+        setNeedsDisplay(bounds)
+            
     }
     
     func windowDidResize(_ notification: Notification) {
-        logoPosition = CGPoint(x: frame.width / 2, y: frame.height / 2)
         logoRadius = min(frame.width, frame.height) / CGFloat(10)
+        logoPosition = getLogoPosition()
         
-        desiredVelocityMagnitude = sqrt(pow(frame.width, 2) - pow(frame.height, 2)) / velocityDenominator
+        if frame.width >= frame.height {
+            desiredVelocityMagnitude = sqrt(pow(frame.width, 2) - pow(frame.height, 2)) / velocityDenominator
+        } else {
+            desiredVelocityMagnitude = sqrt(pow(frame.height, 2) - pow(frame.width, 2)) / velocityDenominator
+        }
         logoVelocity = initialVelocity()
     }
     

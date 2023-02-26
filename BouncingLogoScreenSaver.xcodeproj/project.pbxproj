@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		AF67E02729A498B8004539A3 /* BouncingLogoScreenSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E02629A498B8004539A3 /* BouncingLogoScreenSaverView.swift */; };
 		AF67E02D29A4B0F8004539A3 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E02C29A4B0F8004539A3 /* Logo.swift */; };
-		AF67E05129A502E4004539A3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E05029A502E4004539A3 /* Extensions.swift */; };
+		AF67E05129A502E4004539A3 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E05029A502E4004539A3 /* ColorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AF67E01729A497C1004539A3 /* Bouncing Logo.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bouncing Logo.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF67E02629A498B8004539A3 /* BouncingLogoScreenSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncingLogoScreenSaverView.swift; sourceTree = "<group>"; };
 		AF67E02C29A4B0F8004539A3 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
-		AF67E05029A502E4004539A3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AF67E05029A502E4004539A3 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			children = (
 				AF67E02629A498B8004539A3 /* BouncingLogoScreenSaverView.swift */,
 				AF67E02C29A4B0F8004539A3 /* Logo.swift */,
-				AF67E05029A502E4004539A3 /* Extensions.swift */,
+				AF67E05029A502E4004539A3 /* ColorExtensions.swift */,
 			);
 			path = BouncingLogoScreenSaver;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF67E02D29A4B0F8004539A3 /* Logo.swift in Sources */,
-				AF67E05129A502E4004539A3 /* Extensions.swift in Sources */,
+				AF67E05129A502E4004539A3 /* ColorExtensions.swift in Sources */,
 				AF67E02729A498B8004539A3 /* BouncingLogoScreenSaverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
